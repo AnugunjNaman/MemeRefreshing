@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Meme</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Set a maximum height for the image */
+        .card-img-top {
+            max-height: 500px; /* Adjust this value as needed */
+            object-fit: contain; /* Ensure the image is fully visible */
+        }
+
+        /* Make the comments section scrollable if too long */
+        .comments-section {
+            max-height: 500px; /* Adjust to match the image height */
+            overflow-y: auto;
+        }
+
+        /* Optional styling for comments */
+        .comment {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <!-- Header Section -->
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <h3 class="display-4">{{ meme_title }}</h3>
+                <p class="lead">Refresh the page to see another one!</p>
+            </div>
+        </div>
+        
+        <!-- Meme and Comments Section -->
+        <div class="row justify-content-center mt-4">
+            <!-- Meme Column -->
+            <div class="col-md-6">
+                <div class="card">
+                    <img src="{{ meme_url }}" class="card-img-top" alt="Random Meme">
+                </div>
+            </div>
+            
+            <!-- Comments Column -->
+            <div class="col-md-6">
+                <div class="comments-section">
+                    <!-- Add more comments here dynamically -->
+                    {% for comment in comments %}
+                    <div class="comment">
+                        <strong>{{ comment.author }}:</strong>
+                        <p>{{ comment.text }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
